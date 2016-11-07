@@ -49,7 +49,7 @@ function pincheckCyklicznie()
 	var.watts = 0
 
 	for m=1, 5 do
-		var.watts=var.watts+( a[m]*10/15 )
+		var.watts=var.watts+( a[m]*40 )
 		 print('impulsy minuta nr:'..m.. ' = '..a[m])
 	end
 

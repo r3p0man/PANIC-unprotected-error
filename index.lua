@@ -25,6 +25,11 @@ local function wattinfo(connection)
    sendAttr(connection, "Waty teraz (5 minut)"   , tostring(var.watts))
    sendAttr(connection, "Waty teraz (1 minuta)"   , tostring(a[minuta]*10/15))
    sendAttr(connection, "Impulsy"               , tostring(var.counter))  
+   sendAttr(connection, "m1"               , tostring(a[1]))
+   sendAttr(connection, "m2"               , tostring(a[2]))
+   sendAttr(connection, "m3"               , tostring(a[3]))
+   sendAttr(connection, "m4"               , tostring(a[4]))
+   sendAttr(connection, "m5"               , tostring(a[5]))
    
    connection:send('</ul>')
    end
