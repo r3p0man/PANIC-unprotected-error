@@ -113,7 +113,7 @@ init()
 init=nil
 collectgarbage()
 
-tmr.alarm(4, 20000, tmr.ALARM_AUTO, function()
+tmr.alarm(4, 60000, tmr.ALARM_AUTO, function()
 	node.task.post(0,pincheckCyklicznie)
 end  )
 
