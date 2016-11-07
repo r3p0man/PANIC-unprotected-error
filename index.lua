@@ -38,9 +38,9 @@ return function (connection, req, args)
 		def = req.getRequestData()
 		ok,  buf = pcall(cjson.encode, def)
 		if ok then   -- jak poprawne dane
-			filesave("config.txt",buf)
+			filesave("configfile.txt",buf)
 		else          --jak nie to odtwarzamy z pliku
-			buf=fileread("config.txt")
+			buf=fileread("configfile.txt")
 			if buf ~= false then
 				def = cjson.decode(buf)
 			end
