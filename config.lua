@@ -1,11 +1,11 @@
 
-   fifi={}
-   fifi.ssid=''
-   fifi.pass=''
-   fifi.mode=wifi.STATIONAP
- 
+fifi={}
+fifi.ssid=''
+fifi.pass=''
+fifi.mode=wifi.STATIONAP
+
 -- default values  - don't edit
-def = {} 
+def = {}
 def.ledcheck = 15
 def.gpio = 1
 def.taryfikator = 1500
@@ -19,4 +19,5 @@ var.counter=0   -- licznik impulsow
 var.kwatts=0    -- licznik kwatów sumaryczny
 var.watts=0     -- waty z 5 minut minut
 last=0          -- last led state
+
 -- koniec konfigow
