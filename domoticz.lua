@@ -19,6 +19,8 @@
 
 function domoticz()
   local uri = "http://"..def.DOMOTICZIP..':'..def.DOMOTICZPORT..def.DOMOTICZURL
+  uri=string.gsub(uri, '@@VAR1', var.kwatts)
+  uri=string.gsub(uri, '@@VAR2', var.watts)
  --http.request(url, method, headers, body, callback)
  http.request(uri, "HEAD", def.DOMOTICZHEADER, "", function(code, data)
  -- http.get(uri, header, function(code, data)
