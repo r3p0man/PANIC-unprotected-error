@@ -9,9 +9,9 @@
 function pincheckPik()
 	var.counter = var.counter + 1
 	a[minuta]=a[minuta]+1
-	if var.counter >=  tonumber(def.taryfikator) then
+   	if var.counter >=  3 then
 		var.counter = 0
-		var.kwatts = var.kwatts+1
+		var.watysuma = var.watysuma+2
 	end
 end
 
@@ -44,17 +44,17 @@ end
 function pincheckCyklicznie()
 	local m = 0
 	print("\r\n")
-	print('k-waty sumarycznie ' ..var.kwatts..' kW' )
+	print('k-waty sumarycznie ' ..var.watysuma..' kW' )
 	print('counter ' ,var.counter )
-	var.watts = 0
 
+	var.watysrednia = 0
 	for m=1, 5 do
-		var.watts=var.watts+( a[m]*40 )
+		var.watysrednia=var.watysrednia+( a[m]*40 )
 		 print('impulsy minuta nr:'..m.. ' = '..a[m])
 	end
 
-	var.watts=var.watts/5
-	print('waty teraz (srednia z 5 minut) :' ..var.watts..'W')
+	var.watysrednia=var.watysrednia/5
+	print('waty teraz (srednia z 5 minut) :' ..var.watysrednia..'W')
 	print('heap :', node.heap())
 
 	if minuta >= 5 then
@@ -69,7 +69,7 @@ function pincheckCyklicznie()
 		filesave("temp.txt",json)
 	end
 	--wysylamy do domoticza
-    dofile('domoticz.lc')
+	if  wifi.sta.getip() ~= nil  then dofile('domoticz.lc')   end
 
 	m = nil
 	collectgarbage()
@@ -84,8 +84,8 @@ local function init()
 	end
 
 	if type(var.counter)  ~= 'number' then var.counter = 0 end
-	if type(var.kwatts) ~= 'number' then var.kwatts = 0 end
-	if type(var.watts) ~= 'number' then var.watts = 0 end
+	if type(var.watysuma) ~= 'number' then var.watysuma = 0 end
+	if type(var.watysrednia) ~= 'number' then var.watysrednia = 0 end
 	
 	tmp =nil
 	collectgarbage()

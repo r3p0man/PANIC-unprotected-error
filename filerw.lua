@@ -3,15 +3,9 @@
 function fileread(filename)
    if file.exists(filename)then
       file.open(filename)
-      while true
-      do
         line = file.read()
-        if (line == nil) then
-          file.close()
-          break
-        end
-      return line
-      end
+        if (line ~= nil) then return line 
+        else return false end
     else
       return false -- plik  nie istnieje 
     end

@@ -3,16 +3,13 @@
  <table>
         <tr><td> Led time ms : </td><td> <input name='ledcheck' value='@@ledcheck'></td></tr>
   <tr><td> GPIO czujnika : </td><td><input name='gpio' value='@@gpio'></td></tr>
-  <tr><td> Imp / kW : </td><td><input name='taryfikator' value='@@taryfikator'></td></tr>
+  <tr><td> Stan licznika (pierwsze uruchomienie) : </td><td><input name='taryfikator' value='0'></td></tr>
   <tr><td> Domoticz port : </td><td><input name='DOMOTICZPORT' value='@@DOMOTICZPORT'></td></tr>
   <tr><td> Domoticz host : </td><td><input name='DOMOTICZIP' value='@@DOMOTICZIP'></td></tr>
-  <tr><td> Domoticz header : </td><td><textarea cols="60" rows="4" name='DOMOTICZHEADER' form="usrform">
+  <tr><td> Domoticz header : </td><td><textarea cols="100" rows="2" name='DOMOTICZHEADER' form="usrform">
   @@DOMOTICZHEADER</textarea></td></tr>
-  <tr><td> Domoticz api url : </td><td><textarea cols="60" rows="4" name='DOMOTICZURL' form="usrform">
+  <tr><td> Domoticz api url : </td><td><textarea cols="100" rows="2" name='DOMOTICZURL' form="usrform">
   @@DOMOTICZURL</textarea></td></tr>
-  <tr><td><input type="submit" value="Submit" /></td></tr>
+  <tr><td><input type="submit" value="Zapisz konfig" /></td></tr>
   </table>
 </form>
-
-
-

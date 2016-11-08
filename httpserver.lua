@@ -102,7 +102,7 @@ return function (port)
 
 					-- parse payload and decide what to serve.
 					local req = dofile("httpserver-request.lc")(payload)
-					print(req.method .. ": " .. req.request)
+					--print(req.method .. ": " .. req.request)
 					if conf.auth.enabled then
 						auth = dofile("httpserver-basicauth.lc")
 						user = auth.authenticate(payload) -- authenticate returns nil on failed auth
@@ -156,10 +156,10 @@ return function (port)
 			end
 		)
 		-- false and nil evaluate as false
-		local ip = wifi.sta.getip()
+		--[[local ip = wifi.sta.getip()
 		if not ip then ip = wifi.ap.getip() end
-		if not ip then ip = "unknown IP" end
-		print("nodemcu-httpserver running at http://" .. ip .. ":" ..  port)
+		if not ip then ip = "unknown IP" 
+]]
 		return s
 
 end

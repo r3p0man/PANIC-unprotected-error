@@ -1,0 +1,20 @@
+local function sendAttr(connection, attr, val)
+   connection:send("<li><b>".. attr .. ":</b> " .. val .. "<br></li>\n")
+end 
+return function (connection, req, args)
+   dofile("httpserver-header.lc")(connection, 200, 'html')
+   connection:send('<!DOCTYPE html><html lang="en"><head><meta http-equiv="refresh" content="15"><title>Info mocy :)</title> </head><body>')
+   connection:send('<h3>Power info</h3><ul>')
+   sendAttr(connection, "Status konfiguracji"      , tostring(def.configured))
+   sendAttr(connection, "Waty sumarycznie"      , tostring(var.watysuma))
+   sendAttr(connection, "Waty teraz (srednia z 5 minut)"   , tostring(var.watysrednia))
+   sendAttr(connection, "Waty teraz (1 minuta)"   , tostring(a[minuta]*40))
+   sendAttr(connection, "Impulsy"               , tostring(var.counter))  
+   sendAttr(connection, "m1"               , tostring(a[1]))
+   sendAttr(connection, "m2"               , tostring(a[2]))
+   sendAttr(connection, "m3"               , tostring(a[3]))
+   sendAttr(connection, "m4"               , tostring(a[4]))
+   sendAttr(connection, "m5"               , tostring(a[5]))
+   
+    connection:send('</ul></body></html>')
+   end
