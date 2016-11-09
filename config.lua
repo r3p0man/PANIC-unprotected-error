@@ -2,7 +2,7 @@ require 'filerw'
 
 fifi={}
 fifi.ssid='Rithien-n'
-fifi.pass='haslohaslo'
+fifi.pass='12345670'
 fifi.mode=wifi.STATIONAP
 
 -- default values  - don't edit
@@ -10,6 +10,8 @@ def = {}
 def.configured=0
 def.ledcheck = 15
 def.gpio = 1
+def.imin=40 -- iloczyn minutowy
+def.i2w=3 -- impulsow na 2 w
 def.DOMOTICZPORT = "2222"
 def.DOMOTICZIP = 'domoticz host'
 def.DOMOTICZURL = '/json.htm?param=udevice&type=command&idx=43&nvalue=0&svalue=@@VAR1;@@VAR2'

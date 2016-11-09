@@ -4,6 +4,8 @@
         <tr><td> Led time ms : </td><td> <input name='ledcheck' value='@@ledcheck'></td></tr>
   <tr><td> GPIO czujnika : </td><td><input name='gpio' value='@@gpio'></td></tr>
   <tr><td> Stan licznika (pierwsze uruchomienie) : </td><td><input name='taryfikator' value='0'></td></tr>
+  <tr><td> iloczyn minutowy (60000 /impulsow na kWh ) : </td><td><input name='imin' value='40'></td></tr>
+  <tr><td> impulsow na 2W : </td><td><input name='i2w' value='3'></td></tr>
   <tr><td> Domoticz port : </td><td><input name='DOMOTICZPORT' value='@@DOMOTICZPORT'></td></tr>
   <tr><td> Domoticz host : </td><td><input name='DOMOTICZIP' value='@@DOMOTICZIP'></td></tr>
   <tr><td> Domoticz header : </td><td><textarea cols="100" rows="2" name='DOMOTICZHEADER' form="usrform">

@@ -1,78 +1,19 @@
-
-local function getinfo(connection)
-  connection:send('<h3>Node info</h3><ul>')
-  majorVer, minorVer, devVer, chipid, flashid, flashsize, flashmode, flashspeed = node.info();
-  sendAttr(connection, "NodeMCU version"       , majorVer.."."..minorVer.."."..devVer)
-  sendAttr(connection, "chipid"                , chipid)
-  sendAttr(connection, "flashid"               , flashid)
-  sendAttr(connection, "flashsize"             , flashsize)
-  sendAttr(connection, "flashmode"             , flashmode)
-  sendAttr(connection, "flashspeed"            , flashspeed)
-  sendAttr(connection, "node.heap()"           , node.heap())
-  sendAttr(connection, 'Memory in use (KB)'    , collectgarbage("count"))
-  sendAttr(connection, 'IP address'            , wifi.sta.getip())
-  sendAttr(connection, 'MAC address'           , wifi.sta.getmac())
-  connection:send('</ul>')
+local function sendAttr(connection, attr, val)
+  connection:send("<li><b>".. attr .. ":</b> " .. val .. "<br></li>\n")
 end
-
-
-local function sendpage(connection,line)
-  for  i,v in pairs(def) do
-    if  string.find(line, '@@'..tostring(i)) then
-      line=(string.gsub(line, '@@'..tostring(i), v))
-    end
-  end
-  connection:send(tostring(line))
-  line,i,v=nil
-  collectgarbage();
-end
-
-
 return function (connection, req, args)
-  local buf = nil
   dofile("httpserver-header.lc")(connection, 200, 'html')
+  connection:send('<!DOCTYPE html><html lang="en"><head><meta http-equiv="refresh" content="15"><title>Info mocy :)</title> </head><body>')
+  connection:send('<h3>Power info</h3><ul>')
+  sendAttr(connection, "Status konfiguracji"      , tostring(def.configured))
+  sendAttr(connection, "Wh sumarycznie"      , tostring(var.watysuma))
+  sendAttr(connection, "Waty teraz (srednia z 5 minut)"   , tostring(var.watysrednia))
+  sendAttr(connection, "Aktywna minuta"           , 'm-'..tostring(minuta))
+  sendAttr(connection, "Waty m-1"               , tostring(a[1]*def.imin ))
+  sendAttr(connection, "Waty m-2"               , tostring(a[2]*def.imin ))
+  sendAttr(connection, "Waty m-3"               , tostring(a[3]*def.imin ))
+  sendAttr(connection, "Waty m-4"               , tostring(a[4]*def.imin ))
+  sendAttr(connection, "Waty m-5"               , tostring(a[5]*def.imin ))
 
-  if req.method == "POST" then
-    def = req.getRequestData()
-    if def.taryfikator ~= '0'  then
-      var.watysuma = def.taryfikator
-      def.taryfikator = 0
-    end
-
-
-    ok,  buf = pcall(cjson.encode, def)
-    if ok then   -- jak poprawne dane
-      def.configured= 1
-      filesave("zapisanyconfig.txt",buf)
-      print('skonfigurowano!')
-    else          --jak nie to odtwarzamy z pliku
-      buf=fileread("zapisanyconfig.txt")
-      if buf ~= false then
-        def = cjson.decode(buf)
-      end
-    end
-  end  -- end post
-
-  -- to sie wyswietla zawsze
-  buf = ''
-  if file.exists("index.web") then
-    file.open("index.web")
-    while buf ~= nil
-    do
-      sendpage(connection,buf)
-      buf = file.readline()
-    end
-    file.close()
-  end
-
-  --wattinfo(connection)
-  --getinfo(connection)
-  connection:send('</body></html>')
-
-  buf=nil
-  i = nil
-  v = nil
-
-  collectgarbage();
-
+  connection:send('</ul></body></html>')
 end

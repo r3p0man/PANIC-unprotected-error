@@ -11,6 +11,7 @@ end
 -- czyscimy z niepotrzebnych plikow
 local serverFiles = {
   'config.lua',
+  'update.lua',
   'domoticz.lua',
   'network.lua',
   'pincheck.lua',
@@ -24,6 +25,7 @@ local serverFiles = {
   'httpserver-header.lua',
   'httpserver-request.lua',
   'httpserver-static.lua',
+  'wget.lua',
 }
 
 for i, f in ipairs(serverFiles) do compileAndRemoveIfNeeded(f) end
@@ -36,21 +38,22 @@ collectgarbage()
 dofile('config.lc')
 
 
-
-
 print('chip: ',node.chipid())
 print('heap: ',node.heap())
 
+
 local network = require 'network'
+
 network.Connect(fifi, function()
   dofile("httpserver.lc")(80)
 end)
+
+dofile("pincheck.lc") -- sprawdzaj stan
 
 
 network=nil
 fifi=nil
 collectgarbage()
-dofile("pincheck.lc") -- sprawdzaj stan
 
 
 

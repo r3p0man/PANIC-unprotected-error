@@ -2,7 +2,7 @@
 function pincheckPik()
   var.counter = var.counter + 1
   a[minuta]=a[minuta]+1
-  if var.counter >=  3 then
+  if var.counter >=  def.isum then
     var.counter = 0
     var.watysuma = var.watysuma+2
   end
@@ -42,7 +42,7 @@ function pincheckCyklicznie()
 
   var.watysrednia = 0
   for m=1, 5 do
-    var.watysrednia=var.watysrednia+( a[m]*40 )
+    var.watysrednia=var.watysrednia+( a[m]* def.imin )
     print('impulsy minuta nr:'..m.. ' = '..a[m])
   end
 

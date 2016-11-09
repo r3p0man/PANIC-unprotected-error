@@ -4,7 +4,7 @@
 -- Starts web server in the specified port.
 return function (port)
 
-		local s = net.createServer(net.TCP, 20) -- 10 seconds client timeout
+		local s = net.createServer(net.TCP, 30) -- 10 seconds client timeout
 		s:listen(
 			port,
 			function (connection)
@@ -155,11 +155,11 @@ return function (port)
 
 			end
 		)
-		-- false and nil evaluate as false
-		--[[local ip = wifi.sta.getip()
-		if not ip then ip = wifi.ap.getip() end
-		if not ip then ip = "unknown IP" 
-]]
+		--local ip = wifi.sta.getip()
+		--if not ip then ip = wifi.ap.getip() end
+		--if not ip then ip = "unknown IP" end
+		--print("nodemcu-httpserver running at http://" .. ip .. ":" ..  port)
+		--print( '\r\nweb server runing' )
 		return s
 
 end

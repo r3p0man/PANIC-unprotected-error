@@ -9,9 +9,9 @@ end
 
 local function szowip()
   if def.configured==0 then
-    print("Idz pan tutaj: http://" .. wifi.sta.getip()..  " i skoncz konfigurowac diwajs")
+    print("\r\nIdz pan tutaj: http://" .. wifi.sta.getip()..  "/setup.lua i skoncz konfigurowac diwajs")
   else
-    print("znaleziono konfiguracje, webserwer: http://" .. wifi.sta.getip() )
+    print("\r\nznaleziono konfiguracje, webserwer: http://" .. wifi.sta.getip() )
   end
 end
 
