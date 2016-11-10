@@ -5,7 +5,7 @@ function pincheckPik()
   --if var.counter ==  3 then  stary mariusza 1500/1kWh
    -- var.counter = 0
     var.watysuma = var.watysuma+1
-  end
+  --end
 end
 
 
