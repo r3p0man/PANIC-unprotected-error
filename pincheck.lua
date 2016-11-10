@@ -1,10 +1,10 @@
 -- ********zliczamy impulsy********
 function pincheckPik()
-  var.counter = var.counter + 1
+ -- var.counter = var.counter + 1
   a[minuta]=a[minuta]+1
-  if var.counter >=  def.isum then
-    var.counter = 0
-    var.watysuma = var.watysuma+2
+  --if var.counter ==  3 then  stary mariusza 1500/1kWh
+   -- var.counter = 0
+    var.watysuma = var.watysuma+1
   end
 end
 
@@ -38,11 +38,11 @@ function pincheckCyklicznie()
   local m = 0
   print("\r\n")
   print('k-waty sumarycznie ' ..var.watysuma..' kW' )
-  print('counter ' ,var.counter )
+  --print('counter ' ,var.counter )
 
   var.watysrednia = 0
   for m=1, 5 do
-    var.watysrednia=var.watysrednia+( a[m]* def.imin )
+    var.watysrednia=var.watysrednia+( a[m]*60 )
     print('impulsy minuta nr:'..m.. ' = '..a[m])
   end
 
